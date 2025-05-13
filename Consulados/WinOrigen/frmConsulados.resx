@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="txtNombre.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 40</value>
+  </data>
+  <data name="&gt;&gt;txtPais.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnModificar.Text" xml:space="preserve">
+    <value>&amp;Modificar</value>
+  </data>
+  <data name="btnEliminar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="&gt;&gt;gridConsulados.Type" xml:space="preserve">
+    <value>C1.Win.C1TrueDBGrid.C1TrueDBGrid, C1.Win.C1TrueDBGrid.4.5.2, Version=4.5.20213.532, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da</value>
+  </data>
+  <data name="txtPais.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 16</value>
+  </data>
+  <data name="xpGroupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 91</value>
+  </data>
+  <data name="&gt;&gt;txtPais.Parent" xml:space="preserve">
+    <value>xpGroupBoxFiltro</value>
+  </data>
+  <data name="&gt;&gt;txtNomPais.Parent" xml:space="preserve">
+    <value>xpGroupBoxFiltro</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>IPublica.IU.Win.Base.FormBase, IPublica.IU.Win.Base, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;xpGroupBoxFiltro.Type" xml:space="preserve">
+    <value>IASoft.XPControls.XpGroupBox, IASoft.XPControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtNomPais.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnSeleccionar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gridConsulados.PropBag" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;&lt;Blob&gt;&lt;DataCols&gt;&lt;C1DataColumn Caption="Nombre" DataField="Nombre"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Código INE" DataField="Codigo"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Código País" DataField="CodigoPais"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="País" DataField="NombrePais"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;C1DataColumn Caption="Activo" DataField="Activo"&gt;&lt;FilterCancelText&gt;&amp;amp;Close&lt;/FilterCancelText&gt;&lt;FilterClearText&gt;C&amp;amp;lear&lt;/FilterClearText&gt;&lt;ValueItems Presentation="CheckBox" /&gt;&lt;GroupInfo&gt;&lt;AggregatesText&gt;{0}&lt;/AggregatesText&gt;&lt;/GroupInfo&gt;&lt;/C1DataColumn&gt;&lt;/DataCols&gt;&lt;Styles type="C1.Win.C1TrueDBGrid.Design.ContextWrapper"&gt;&lt;Data&gt;Caption{AlignHorz:General;}ColumnSelector{}Editor{}EvenRow{BackColor:231, 233, 235;Font:Microsoft Sans Serif, 9pt;}FilterBar{}FilterWatermark{BackColor:Info;ForeColor:InfoText;}Footer{}Group{BackColor:ControlDark;Border:None,,0, 0, 0, 0;AlignVert:Center;}Heading{BackColor:0, 59, 134;ForeColor:White;Font:Microsoft Sans Serif, 9pt, style=Bold;Border:Raised,,1, 1, 1, 1;AlignHorz:Center;AlignVert:Center;WrapText:WrapWithOverflow;}HeadingHot{}HighlightRow{BackColor:57, 115, 189;ForeColor:HighlightText;AlignVert:Center;}Inactive{BackColor:InactiveCaption;ForeColor:InactiveCaptionText;Font:Microsoft Sans Serif, 9pt;}Normal{BackColor:White;Font:Microsoft Sans Serif, 9pt;AlignVert:Center;}OddRow{}RecordSelector{AlignImage:Center;}RowSelector{}Selected{BackColor:57, 115, 189;ForeColor:HighlightText;}Style1{}Style10{AlignHorz:Near;}Style11{}Style12{}Style13{}Style14{AlignHorz:Center;}Style15{AlignHorz:Near;}Style16{}Style17{}Style18{AlignHorz:Center;}Style19{AlignHorz:Near;}Style2{}Style20{}Style21{}Style22{}Style23{}Style24{}Style25{}Style26{}Style27{}Style28{Trimming:Character;AlignHorz:Center;AlignVert:Center;AlignImage:Stretch;ForegroundImagePos:LeftOfText;GradientMode:None;Alpha:255;WrapText:WrapWithOverflow;}Style29{AlignHorz:Center;}Style3{}Style30{}Style31{}Style32{}Style33{}Style34{AlignHorz:Center;}Style35{AlignHorz:Near;}Style36{}Style37{}Style38{}Style39{}Style4{}Style40{AlignHorz:Center;}Style41{AlignHorz:Near;}Style42{}Style43{}Style44{}Style45{}Style46{}Style47{}Style48{}Style49{}Style5{}Style50{}Style51{}Style52{}Style53{}Style54{}Style55{}Style56{}Style57{}Style58{}Style59{}Style6{}Style7{}Style8{}Style9{}&lt;/Data&gt;&lt;/Styles&gt;&lt;Splits&gt;&lt;C1.Win.C1TrueDBGrid.MergeView Name="" AllowRowSizing="IndividualRows" AlternatingRowStyle="True" CaptionHeight="17" ColumnCaptionHeight="17" ColumnFooterHeight="17" ExtendRightColumn="True" MarqueeStyle="HighlightRow" RecordSelectorWidth="17" DefRecSelWidth="17" RecordSelectors="False" VerticalScrollGroup="1" HorizontalScrollGroup="1"&gt;&lt;CaptionStyle parent="Style2" me="Style10" /&gt;&lt;EditorStyle parent="Editor" me="Style5" /&gt;&lt;EvenRowStyle parent="EvenRow" me="Style8" /&gt;&lt;FilterBarStyle parent="FilterBar" me="Style13" /&gt;&lt;FilterWatermarkStyle parent="FilterWatermark" me="Style49" /&gt;&lt;FooterStyle parent="Footer" me="Style3" /&gt;&lt;GroupStyle parent="Group" me="Style12" /&gt;&lt;HeadingStyle parent="Heading" me="Style2" /&gt;&lt;HeadingHotStyle parent="HeadingHot" me="Style48" /&gt;&lt;HighLightRowStyle parent="HighlightRow" me="Style7" /&gt;&lt;InactiveStyle parent="Inactive" me="Style4" /&gt;&lt;OddRowStyle parent="OddRow" me="Style9" /&gt;&lt;RecordSelectorStyle parent="RecordSelector" me="Style11" /&gt;&lt;RowSelectorStyle parent="RowSelector" me="Style46" /&gt;&lt;ColumnSelectorStyle parent="ColumnSelector" me="Style47" /&gt;&lt;SelectedStyle parent="Selected" me="Style6" /&gt;&lt;Style parent="Normal" me="Style1" /&gt;&lt;internalCols&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style34" /&gt;&lt;HeadingHotStyle parent="Style48" me="Style51" /&gt;&lt;ColumnSelectorStyle parent="Style47" me="Style50" /&gt;&lt;Style parent="Style1" me="Style35" /&gt;&lt;FooterStyle parent="Style3" me="Style36" /&gt;&lt;EditorStyle parent="Style5" me="Style37" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style39" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style38" /&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;DCIdx&gt;2&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style40" /&gt;&lt;HeadingHotStyle parent="Style48" me="Style53" /&gt;&lt;ColumnSelectorStyle parent="Style47" me="Style52" /&gt;&lt;Style parent="Style1" me="Style41" /&gt;&lt;FooterStyle parent="Style3" me="Style42" /&gt;&lt;EditorStyle parent="Style5" me="Style43" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style45" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style44" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;Locked&gt;True&lt;/Locked&gt;&lt;DCIdx&gt;3&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style14" /&gt;&lt;HeadingHotStyle parent="Style48" me="Style55" /&gt;&lt;ColumnSelectorStyle parent="Style47" me="Style54" /&gt;&lt;Style parent="Style1" me="Style15" /&gt;&lt;FooterStyle parent="Style3" me="Style16" /&gt;&lt;EditorStyle parent="Style5" me="Style17" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style25" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style24" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;78&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;Locked&gt;True&lt;/Locked&gt;&lt;DCIdx&gt;1&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style18" /&gt;&lt;HeadingHotStyle parent="Style48" me="Style57" /&gt;&lt;ColumnSelectorStyle parent="Style47" me="Style56" /&gt;&lt;Style parent="Style1" me="Style19" /&gt;&lt;FooterStyle parent="Style3" me="Style20" /&gt;&lt;EditorStyle parent="Style5" me="Style21" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style27" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style26" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;211&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;Locked&gt;True&lt;/Locked&gt;&lt;DCIdx&gt;0&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;C1DisplayColumn&gt;&lt;HeadingStyle parent="Style2" me="Style28" /&gt;&lt;HeadingHotStyle parent="Style48" me="Style59" /&gt;&lt;ColumnSelectorStyle parent="Style47" me="Style58" /&gt;&lt;Style parent="Style1" me="Style29" /&gt;&lt;FooterStyle parent="Style3" me="Style30" /&gt;&lt;EditorStyle parent="Style5" me="Style31" /&gt;&lt;GroupHeaderStyle parent="Style1" me="Style33" /&gt;&lt;GroupFooterStyle parent="Style1" me="Style32" /&gt;&lt;Visible&gt;True&lt;/Visible&gt;&lt;ColumnDivider&gt;DarkGray,Single&lt;/ColumnDivider&gt;&lt;Width&gt;43&lt;/Width&gt;&lt;Height&gt;15&lt;/Height&gt;&lt;Locked&gt;True&lt;/Locked&gt;&lt;DCIdx&gt;4&lt;/DCIdx&gt;&lt;/C1DisplayColumn&gt;&lt;/internalCols&gt;&lt;ClientRect&gt;0, 0, 518, 199&lt;/ClientRect&gt;&lt;BorderSide&gt;0&lt;/BorderSide&gt;&lt;BorderStyle&gt;Sunken&lt;/BorderStyle&gt;&lt;/C1.Win.C1TrueDBGrid.MergeView&gt;&lt;/Splits&gt;&lt;NamedStyles&gt;&lt;Style parent="" me="Normal" /&gt;&lt;Style parent="Normal" me="Heading" /&gt;&lt;Style parent="Heading" me="Footer" /&gt;&lt;Style parent="Heading" me="Caption" /&gt;&lt;Style parent="Heading" me="Inactive" /&gt;&lt;Style parent="Normal" me="Selected" /&gt;&lt;Style parent="Normal" me="Editor" /&gt;&lt;Style parent="Normal" me="HighlightRow" /&gt;&lt;Style parent="Normal" me="EvenRow" /&gt;&lt;Style parent="Normal" me="OddRow" /&gt;&lt;Style parent="Heading" me="RecordSelector" /&gt;&lt;Style parent="Normal" me="FilterBar" /&gt;&lt;Style parent="Caption" me="Group" /&gt;&lt;Style parent="RecordSelector" me="RowSelector" /&gt;&lt;Style parent="Heading" me="ColumnSelector" /&gt;&lt;Style parent="Heading" me="HeadingHot" /&gt;&lt;Style parent="FilterBar" me="FilterWatermark" /&gt;&lt;/NamedStyles&gt;&lt;vertSplits&gt;1&lt;/vertSplits&gt;&lt;horzSplits&gt;1&lt;/horzSplits&gt;&lt;Layout&gt;Modified&lt;/Layout&gt;&lt;DefaultRecSelWidth&gt;17&lt;/DefaultRecSelWidth&gt;&lt;ClientArea&gt;0, 0, 518, 199&lt;/ClientArea&gt;&lt;PrintPageHeaderStyle parent="" me="Style22" /&gt;&lt;PrintPageFooterStyle parent="" me="Style23" /&gt;&lt;/Blob&gt;</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="gridConsulados.PrintInfo.PageHeaderHeight" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;lblNombre.Parent" xml:space="preserve">
+    <value>xpGroupBoxFiltro</value>
+  </data>
+  <data name="&gt;&gt;btnSeleccionar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnModificar.Name" xml:space="preserve">
+    <value>btnModificar</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.RepeatColumnFooters" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtIdPais.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="btnBuscaPais.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIcAAP//////8f///f//+fn4+AAhxTFozS1ozS5ozZyw04/R9zBpzQBExejo8YOCgv//
+        +P///ERyzBFWyyBfzNna2TBozypozWSK1EFzzufr9+z4/cPL1cTH0ZSv2pGv2ChlzNPg9Cxjw9XY41KB
+        ypyx0t/e3tzc3GqJzuro6Hig2a+trhFUyJ2w1m2f7+zp4fv2+mGI4fr19YOf1NTX3Onu9dzj7Cdu2Ye8
+        51FNVBZWykhFSfX2+ydixfX0+EeG9Dtx5evq6+Xr8/D1/Bxbzc7R2MHH4Rhdz/Xv5hhZy7zK3e3t7T+N
+        9K3f+7m6uuru9/Pz9GdobvHx8YKIkyRhzE2B1Y6p3/X4+9vc38jIycLGyWuo7W649Pb0+XGW2Xqb2g5T
+        ywVMyAFW1dna3iVjzebo762xvxVSwzNozcrK0yRizStmzdPT1WloYy1kzZHS9ffx6p655eXr9tXU1DBm
+        11iDyStrz8TW7e3x+L29u8nP2tXf8Cljzeju9/X1+t3h532g3H+d1Pf//6iwurnP6ixlzb/F0/X4/LjH
+        4JCRkfX19h9ayqaoqBdTvmBhYuft92+NzcXFw6WmpmeM1v//8C5ozoODg/Pq7sfu/y1v5ABCwf749fHx
+        +WyKxtXa5jRozc/g+jBnzR9eySZgzPXz8wJHv6fV9pajwv//9q2ys8jIxwRIxv7z9MLK1dLh8f/4+Mjj
+        /ZKTlL3BzJSo15uhsD120CRgzA5OyPXw6SVfzP/79u3z+whNxr7V/xRVzejt9+ju+AJGvv///wAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAADBACwAAAAAEAAQAAAI/wCDCQxmRRcfJxnikEk0sOGvHQAi
+        RuzR6UrDYEIABLrExI2CUhoAiFgz0BeAV1tu6LHUSssSXgA4mAhmSMAnHzACxIDjatUPTDRGoSJwB0AL
+        G4/8UCngBYKkMCkAlCmxCcScCqIUDQFTRAAtCXUAsGryYlCvNgZAhUoA4A8SXEb6EFnExc4XQp7ScBpQ
+        xRaCKTwGbIjkSNOeCWfGnKiBodaCHHQAzFIR5IEsVQfURLhggdIHUkkAQKHwpMGpEQxWmALQZVcmGQAE
+        sSEQbEauAICAhfBghhELAGJ0yBmIBggAFyQ6HJoEoBAOPBezxELx5sitPFIaQbooUAkWRA4qwQVKFaVh
+        QAA7
+</value>
+  </data>
+  <data name="&gt;&gt;xpGroupBox2.Type" xml:space="preserve">
+    <value>IASoft.XPControls.XpGroupBox, IASoft.XPControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;txtPais.Name" xml:space="preserve">
+    <value>txtPais</value>
+  </data>
+  <data name="xpGroupBoxFiltro.Size" type="System.Drawing.Size, System.Drawing">
+    <value>550, 91</value>
+  </data>
+  <data name="&gt;&gt;btnAnadir.Name" xml:space="preserve">
+    <value>btnAnadir</value>
+  </data>
+  <data name="btnBuscaPais.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="&gt;&gt;xpGroupBoxFiltro.Name" xml:space="preserve">
+    <value>xpGroupBoxFiltro</value>
+  </data>
+  <data name="&gt;&gt;btnBuscaPais.Name" xml:space="preserve">
+    <value>btnBuscaPais</value>
+  </data>
+  <data name="btnModificar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>456, 266</value>
+  </data>
+  <data name="chkActivos.Text" xml:space="preserve">
+    <value>Mostrar consulados no activos</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.OneFormPerPage" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.RepeatGridHeader" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnAnadir.Text" xml:space="preserve">
+    <value>A&amp;ñadir</value>
+  </data>
+  <data name="btnModificar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="&gt;&gt;btnAnadir.Type" xml:space="preserve">
+    <value>IASoft.XPControls.XpButton, IASoft.XPControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;chkActivos.Parent" xml:space="preserve">
+    <value>xpGroupBoxFiltro</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Lista de Consulados</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.OwnerDrawPageHeader" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnSeleccionar.Name" xml:space="preserve">
+    <value>btnSeleccionar</value>
+  </data>
+  <data name="&gt;&gt;btnCerrar.Name" xml:space="preserve">
+    <value>btnCerrar</value>
+  </data>
+  <data name="gridConsulados.Size" type="System.Drawing.Size, System.Drawing">
+    <value>522, 203</value>
+  </data>
+  <data name="&gt;&gt;btnEliminar.Parent" xml:space="preserve">
+    <value>xpGroupBox2</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.MaxRowHeight" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.ShowProgressForm" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;txtNomPais.Name" xml:space="preserve">
+    <value>txtNomPais</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.ShowSelection" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="gridConsulados.PreviewInfo.UIStrings.Content" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>AAEAAAD/////AQAAAAAAAAARAQAAAAAAAAAL</value>
+  </data>
+  <data name="&gt;&gt;xpGroupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnModificar.Type" xml:space="preserve">
+    <value>IASoft.XPControls.XpButton, IASoft.XPControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="btnSeleccionar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 358</value>
+  </data>
+  <data name="&gt;&gt;gridConsulados.Parent" xml:space="preserve">
+    <value>xpGroupBox2</value>
+  </data>
+  <data name="gridConsulados.PreviewInfo.ToolBars" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;txtNombre.Parent" xml:space="preserve">
+    <value>xpGroupBoxFiltro</value>
+  </data>
+  <data name="&gt;&gt;lblPais.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblPais.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 20</value>
+  </data>
+  <data name="&gt;&gt;btnModificar.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnCerrar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnAnadir.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;localizationFilter1.Type" xml:space="preserve">
+    <value>IASoft.Localization.LocalizationFilter, IASoft.Localization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="txtPais.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="&gt;&gt;lblPais.Parent" xml:space="preserve">
+    <value>xpGroupBoxFiltro</value>
+  </data>
+  <data name="&gt;&gt;lblNombre.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="xpGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>550, 301</value>
+  </data>
+  <data name="btnCerrar.Text" xml:space="preserve">
+    <value>&amp;Cerrar</value>
+  </data>
+  <data name="btnBuscaPais.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 15</value>
+  </data>
+  <data name="&gt;&gt;lblNombre.Name" xml:space="preserve">
+    <value>lblNombre</value>
+  </data>
+  <data name="btnAnadir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 266</value>
+  </data>
+  <data name="lblNombre.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 13</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.RepeatColumnHeaders" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;xpGroupBoxFiltro.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="xpGroupBoxFiltro.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.UseGridColors" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btnAnadir.Parent" xml:space="preserve">
+    <value>xpGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;txtIdPais.Name" xml:space="preserve">
+    <value>txtIdPais</value>
+  </data>
+  <data name="txtNomPais.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 16</value>
+  </data>
+  <data name="&gt;&gt;gridConsulados.Name" xml:space="preserve">
+    <value>gridConsulados</value>
+  </data>
+  <data name="&gt;&gt;gridConsulados.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="xpGroupBox2.Text" xml:space="preserve">
+    <value>Listado de Registros</value>
+  </data>
+  <data name="chkActivos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 17</value>
+  </data>
+  <data name="&gt;&gt;txtNomPais.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtNombre.Name" xml:space="preserve">
+    <value>txtNombre</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.ProgressCaption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;btnEliminar.Name" xml:space="preserve">
+    <value>btnEliminar</value>
+  </data>
+  <data name="&gt;&gt;btnModificar.Parent" xml:space="preserve">
+    <value>xpGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnCerrar.Type" xml:space="preserve">
+    <value>IASoft.XPControls.XpButton, IASoft.XPControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="gridConsulados.PreviewInfo.AllowSizing" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblPais.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
+  </data>
+  <data name="&gt;&gt;txtPais.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;chkActivos.Name" xml:space="preserve">
+    <value>chkActivos</value>
+  </data>
+  <data name="&gt;&gt;btnBuscaPais.Parent" xml:space="preserve">
+    <value>xpGroupBoxFiltro</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.ShowOptionsDialog" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;localizationFilter1.Name" xml:space="preserve">
+    <value>localizationFilter1</value>
+  </data>
+  <data name="&gt;&gt;txtNombre.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSeleccionar.Text" xml:space="preserve">
+    <value>&amp;Seleccionar</value>
+  </data>
+  <data name="btnCerrar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 358</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.OwnerDrawPageFooter" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkActivos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblPais.Text" xml:space="preserve">
+    <value>País:</value>
+  </data>
+  <data name="&gt;&gt;chkActivos.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.PageFooterHeight" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;lblNombre.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;btnBuscaPais.Type" xml:space="preserve">
+    <value>IASoft.XPControls.XpButton, IASoft.XPControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnEliminar.Type" xml:space="preserve">
+    <value>IASoft.XPControls.XpButton, IASoft.XPControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;xpGroupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmConsulados</value>
+  </data>
+  <data name="xpGroupBoxFiltro.Text" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.PageHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnCerrar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="&gt;&gt;xpGroupBox2.Name" xml:space="preserve">
+    <value>xpGroupBox2</value>
+  </data>
+  <data name="btnEliminar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>372, 266</value>
+  </data>
+  <data name="btnEliminar.Text" xml:space="preserve">
+    <value>&amp;Eliminar</value>
+  </data>
+  <data name="&gt;&gt;xpGroupBoxFiltro.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="gridConsulados.Images" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wQAADsEBuJFr7QAAADRJREFUKFN1iQEKACAMAv3/p4six3R5IIqHD+v1oIu0Lzy8B0cwQhcpQhSEwrvo
+        R9qCCWADoKoc5CkvobIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="gridConsulados.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 50</value>
+  </data>
+  <data name="&gt;&gt;txtNombre.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;lblPais.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSeleccionar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="&gt;&gt;btnSeleccionar.Type" xml:space="preserve">
+    <value>IASoft.XPControls.XpButton, IASoft.XPControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnCerrar.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnEliminar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnBuscaPais.Text" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="txtNombre.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 20</value>
+  </data>
+  <data name="gridConsulados.PreviewInfo.Caption" xml:space="preserve">
+    <value>PrintPreview Window</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.PageFooter" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkActivos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 66</value>
+  </data>
+  <data name="btnAnadir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 25</value>
+  </data>
+  <data name="lblNombre.Text" xml:space="preserve">
+    <value>Nombre:</value>
+  </data>
+  <data name="&gt;&gt;lblPais.Name" xml:space="preserve">
+    <value>lblPais</value>
+  </data>
+  <data name="&gt;&gt;txtIdPais.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtNomPais.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 20</value>
+  </data>
+  <data name="gridConsulados.Text" xml:space="preserve">
+    <value>c1TrueDBGrid1</value>
+  </data>
+  <data name="lblNombre.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 44</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.PrintHorizontalSplits" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btnBuscaPais.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gridConsulados.PrintInfo.RepeatSplitHeaders" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtIdPais.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <metadata name="localizationFilter1.LocalizablePropertiesArray" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAARAQAAAAQAAAAGAgAAAAhMb2NhdGlvbgYDAAAABFNpemUGBAAAAARUZXh0
+        BgUAAAAHUHJvcEJhZws=
+</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>45</value>
+  </metadata>
+  <metadata name="localizationFilter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+</root>

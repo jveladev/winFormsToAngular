@@ -1,0 +1,10 @@
+<section class="main-actions" aria-labelledby="mainActionsTitle">
+        <button [ngClass]="isdetalle?'btn btn-primary ms-1':'btn btn-secondary ms-1'" attr.aria-label="{{ 'global.guardar' | translate }}" (click)="onSubmit()" appHasPermission permission="edit_ent_territorio_consulado" *ngIf="candoEdit">
+            {{'global.guardar'|translate}}
+        </button>
+        @if(!isdetalle){
+        <button class="btn btn-primary ms-1" attr.aria-label="{{ 'global.guardar.salir' | translate }}" (click)="onSubmit('list')" appHasPermission permission="edit_ent_territorio_consulado" *ngIf="candoEdit">
+            {{'global.guardar.salir'|translate}}
+        </button>        
+        }
+</section>
