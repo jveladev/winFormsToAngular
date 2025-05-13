@@ -1,0 +1,63 @@
+<div class="card-body">
+ @if(showSearchAccordion){   
+  <div class="col-md-12" id="provinciaSearchColapsable">
+      <h5 class="h6 text-bold border-bottom border-primary pb-2">
+          <a 
+              class="colapsable collapsed" 
+              data-bs-toggle="collapse" 
+              href="#provinciaSearchControl" 
+              role="button" 
+              aria-expanded="true" 
+              aria-controls="provinciaSearchControl">
+              {{getSearchTitle()}}
+          </a>
+      </h5>
+      <div class="collapse show" id="provinciaSearchControl">  
+        <ng-container [ngTemplateOutlet]="formTemplate"></ng-container> 
+      </div>  
+    </div>
+ } @else{
+    <ng-container [ngTemplateOutlet]="formTemplate"></ng-container> 
+  }      
+        
+</div>
+
+<ng-template #formTemplate>
+      <form class="form-horizontal" [formGroup]="searchForm" (keyup.enter)="searchByFilter()" aria-labelledby="searchFormTitle">
+          <div class="viewer-body">
+            <div class="row mb-4 align-items-start">
+            <div class="col col-12 col-xl-7 ">
+    <div class="form-group   ">
+        <label for="nombreeq" class="form-label">
+            {{'provincia.nombre'|translate}} 
+    
+        </label>
+        <input 
+            type="text" 
+            id="nombreeq" 
+            autocomplete="off"
+            class="form-control form-control-sm "
+             
+             
+            maxlength="50" 
+             
+            
+            formControlName="nombreeq" 
+            aria-describedby="nombreeqHelp" 
+            placeholder="{{'provincia.nombre'|translate}} "
+        >
+        <jnum-show-errors [control]="nombreeq" [controlName]="'nombreeq'" id="nombreeqHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+          </div>
+          <div class="row align-items-center">
+              <div class="col text-end">
+        <button type="button" title="{{ 'global.limpiar.filtro' | translate }}" class="btn btn-secondary btn-sm ms-1 mt-2" (click)="clearForm()"><i class="bi bi-trash"></i></button>       
+        <button type="button" title="{{ 'global.save.filtro' | translate }}" class="btn btn-secondary btn-sm ms-1 mt-2" (click)="saveFilter()"><i class="bi bi-floppy"></i></button>
+        <button type="button" title="{{ 'global.restore.filtro' | translate }}" class="btn btn-secondary btn-sm ms-1 mt-2" (click)="restoreFilter()"><i class="bi bi-arrow-repeat"></i></button>          
+        <button type="button" title="{{ 'global.buscar' | translate }}" class="btn btn-primary btn-sm ms-1 mt-2" (click)="searchValidationEntityByFilter()"><i class="bi bi-search"></i></button>
+              </div>
+          </div>
+      </form>
+</ng-template>
