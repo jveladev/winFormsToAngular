@@ -1,0 +1,273 @@
+    <div [ngClass]="{'row my-4': (!nombreDetalle || !conf.env.detailsInModal), 'row': (nombreDetalle && conf.env.detailsInModal) }" *ngIf="!isonetoone">
+        <div class="col col-12 col-md-12">
+            <section class="title sticky-top d-flex align-items-center mb-4" *ngIf="!parent || (tree && conf.env.saveTogether) || (nombreDetalle && conf.env.detailsInModal)">
+                <div class="title-text d-flex align-items-center">
+                    @if(nombreDetalle && conf.env.detailsInModal){
+                      <a  (click)="goToPrevious()" class="btn btn-link btn-rounded btn-circle me-2" role="button" attr.aria-label="{{ 'global.volver' | translate }}" title="{{ 'global.volver' | translate }}"><i class="bi bi-arrow-left"></i></a>
+                    } @else{
+                      <a (click)="goToPrevious()" class="btn btn-link btn-rounded btn-circle me-2" role="button" attr.aria-label="{{ 'global.volver' | translate }}" title="{{ 'global.volver' | translate }}"  ><i class="bi bi-arrow-left"></i></a>
+                    }                                       
+                    <h1 class="flex-grow-1">{{getNewTitle()}}</h1>
+                </div>
+                <div class="main-actions" >
+                    	  @if(!nombreDetalle){
+							              <button *ngIf="!parent && !conf.env.saveTogether" (click)="onSubmit()" type="button" class="btn btn-primary" appHasPermission permission="add_ent_territorio_municipios">{{'global.guardar'|translate}}</button>
+                            <button *ngIf="!parent || (tree && conf.env.saveTogether)" (click)="onSubmit('new')" type="button" class="btn btn-secondary ms-1" appHasPermission permission="add_ent_territorio_municipios">{{'global.guardar'|translate}}</button>
+                            <button *ngIf="!parent || (tree && conf.env.saveTogether)" (click)="onSubmit('list')" type="button" class="btn btn-primary  ms-1"  appHasPermission permission="add_ent_territorio_municipios">{{'global.guardar.salir'|translate}}</button>
+                        }@else{
+                           @if(nombreDetalle && conf.env.detailsInModal){
+                            <button *ngIf="!parent || conf.env.saveTogether" (click)="onSubmit()" type="button" class="btn btn-primary  ms-1"  appHasPermission permission="add_ent_territorio_municipios">{{'global.guardar'|translate}}</button>
+                           }@else{
+                            <button *ngIf="!parent || conf.env.saveTogether" (click)="onSubmit('new')" type="button" class="btn btn-secondary ms-1" appHasPermission permission="add_ent_territorio_municipios">{{'global.guardar'|translate}}</button>
+                            <button *ngIf="!parent || conf.env.saveTogether" (click)="onSubmit('list')" type="button" class="btn btn-primary  ms-1"  appHasPermission permission="add_ent_territorio_municipios">{{'global.guardar.salir'|translate}}</button>
+                           }
+                        }
+                </div>
+            </section>
+            <ng-container *ngIf="!parent || this.pop" appInsertSectionsMap></ng-container>
+
+            <div class="card mt-4 mb-3" *ngIf="!parent || (tree && conf.env.saveTogether)">
+                <div class="card-body">
+                    <ng-container *ngTemplateOutlet="formTemplate"/>
+                </div>
+            </div>
+            <div class="card mt-4 mb-3" *ngIf="parent && !(tree && conf.env.saveTogether)">
+                <div class="card-body">
+                    <div class="col-md-12" id="municipiosColapsable">
+                     @if(!(nombreDetalle && conf.env.detailsInModal)){
+                        <h2 class="h6 text-bold border-bottom border-primary pb-2">
+                            <a 
+                                class="colapsable collapsed" 
+                                data-bs-toggle="collapse" 
+                                href="#municipiosControl" 
+                                role="button" 
+                                aria-expanded="true" 
+                                aria-controls="municipiosControl">
+                                {{ getNewTitle() }}
+                            </a>
+                        </h2>
+                        }
+                        <div [ngClass]="{'collapse': (!nombreDetalle || !conf.env.detailsInModal)}"  class="collapse" id="municipiosControl">
+                            <ng-container *ngTemplateOutlet="formTemplate"/>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<ng-template #formTemplate>
+                        <form class="form-horizontal" [formGroup]="municipiosNewForm" (keyup.enter)='onSubmit($event)' aria-labelledby="municipiosFormTitle">
+                            <div class="viewer-body">
+            <div class="row mb-4 align-items-start">
+            <div class="col col-12 col-xl-6 ">
+        <div class="form-group jnum-datepicker       required" >
+          <label for="provinciaRef" class="form-label">{{'municipios.provinciaref'|translate}}     <span class="text-primary">*</span>
+</label>
+          <div class="input-group input-group-sm">          
+            <input type="text" class="d-none" maxlength="100" id="municipios_provinciaRefhid"   
+              formControlName="provinciaRef"  
+              readonly>
+            <span class="me-1 col-4"> 
+              <input #codigoProvinciaPropElement  class="form-control mandatory " type="text" maxlength="2"          
+                id="municipios_provinciaRef"  
+                autocomplete="off"                
+                (change)="obtenerProvinciaRefByCodigoProvinciaProp($event)"               
+                formControlName="codigoProvinciaProp" placeholder="{{'provincia.codigo'|translate}} " >        
+              </span>           
+             <input  #provinciaRefElement type="text" class="form-control rounded-start mandatory " 
+            id="municipios_provinciaRefpropinput"   
+            placeholder="{{'municipios.provinciaref'|translate}}" autocomplete="off"
+            value="{{ provinciaRefSelected?.nombre }}"
+            formControlName="provinciaRefNombre"
+            (change)="obtenerProvinciaRefByNombre($event)">            
+                <button type="button" class="btn p-1 btn-datepicker border-end-0" attr.aria-label="{{'global.buscar'|translate}}">
+                    <i title="{{'global.buscar'|translate}}" class="bi bi-search" (click)="searchProvinciaRef()"></i>
+                </button>
+                <button type="button" [disabled]="!provinciaRefSelected" class="btn p-1 btn-datepicker border-start-0 border-end-0" attr.aria-label="{{'global.limpiar'|translate}}">
+                    <i title="{{'global.limpiar'|translate}}" class="bi bi-eraser" (click)="clearProvinciaRef()"></i>
+                </button>
+                <button type="button" class="btn p-1 btn-datepicker border-start-0 border-end-0" attr.aria-label="{{'global.add'|translate}}">
+                    <i title="{{'global.add'|translate}}" class="bi bi-plus-square" (click)="addProvinciaRef()"></i>
+                </button>
+                <button type="button" [disabled]="!provinciaRefSelected" class="btn p-1 btn-datepicker border-start-0 border-end-0" attr.aria-label="{{'global.editar'|translate}}">
+                    <i title="{{'global.editar'|translate}}" class="bi bi-pencil-square" (click)="editProvinciaRef(provinciaRefSelected)"></i>
+                </button>
+                <button type="button" [disabled]="!provinciaRefSelected" class="btn p-1 btn-datepicker border-start-0 " attr.aria-label="{{'global.eliminar'|translate}}">
+                    <i title="{{'global.eliminar'|translate}}" class="bi bi-trash3" (click)="deleteProvinciaRef(provinciaRefSelected)"></i>
+                </button>
+          </div>
+        </div>    
+          <div class="input-group input-group-sm">
+          <div>
+            <jnum-show-errors [control]="codigoProvinciaProp"></jnum-show-errors>
+          </div>
+            <jnum-show-errors [control]="provinciaRefNombre"></jnum-show-errors>
+        </div>   
+            </div>
+            <div class="col col-12 col-xl-3 ">
+    <div class="form-check">
+      <input 
+        class="form-check-input"
+        type="checkbox"  
+        id="municipios_activo" formControlName="activo" 
+         
+        
+       >
+      <label class="form-check-label" for="municipios_activo">{{'municipios.activo'|translate}} </label>
+    </div>
+            </div>
+            </div>
+            <div class="row mb-4 align-items-start">
+            <div class="col col-12 col-xl-3 ">
+    <div class="form-group   required">
+        <label for="codigoINE" class="form-label">
+            {{'municipios.codigoine'|translate}} 
+    <span class="text-primary">*</span>
+        </label>
+        <input 
+            type="text" 
+            id="codigoINE" 
+            autocomplete="off"
+            class="form-control form-control-sm mandatory "
+             
+             
+            maxlength="3" 
+             
+            (change)="codigoINEChange()"
+            formControlName="codigoINE" 
+            aria-describedby="codigoINEHelp" 
+            placeholder="{{'municipios.codigoine'|translate}} "
+        >
+        <jnum-show-errors [control]="codigoINE" [controlName]="'codigoINE'" id="codigoINEHelp"></jnum-show-errors>
+    </div>
+            </div>
+            <div class="col col-12 col-xl-1 ">
+    <div class="form-group   ">
+        <label for="digito" class="form-label">
+            {{'municipios.digito'|translate}} 
+    
+        </label>
+        <input 
+            type="text" 
+            id="digito" 
+            autocomplete="off"
+            class="form-control form-control-sm text-end"
+             
+             
+            maxlength="1" 
+             
+            
+            formControlName="digito" 
+            aria-describedby="digitoHelp" 
+            placeholder="{{'municipios.digito'|translate}} "
+        >
+        <jnum-show-errors [control]="digito" [controlName]="'digito'" id="digitoHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+            <div class="row mb-4 align-items-start">
+            <div class="col col-12 col-xl-3 ">
+    <div class="form-group   ">
+        <label for="codigoAEAT" class="form-label">
+            {{'municipios.codigoaeat'|translate}} 
+    
+        </label>
+        <input 
+            type="text" 
+            id="codigoAEAT" 
+            autocomplete="off"
+            class="form-control form-control-sm "
+             
+             
+            maxlength="5" 
+             
+            (change)="codigoAEATChange()"
+            formControlName="codigoAEAT" 
+            aria-describedby="codigoAEATHelp" 
+            placeholder="{{'municipios.codigoaeat'|translate}} "
+        >
+        <jnum-show-errors [control]="codigoAEAT" [controlName]="'codigoAEAT'" id="codigoAEATHelp"></jnum-show-errors>
+    </div>
+            </div>
+            <div class="col col-12 col-xl-7 ">
+    <div class="form-group   required">
+        <label for="nombre" class="form-label">
+            {{'municipios.nombre'|translate}} 
+    <span class="text-primary">*</span>
+        </label>
+        <input 
+            type="text" 
+            id="nombre" 
+            autocomplete="off"
+            class="form-control form-control-sm mandatory "
+             
+             
+            maxlength="70" 
+             
+            
+            formControlName="nombre" 
+            aria-describedby="nombreHelp" 
+            placeholder="{{'municipios.nombre'|translate}} "
+        >
+        <jnum-show-errors [control]="nombre" [controlName]="'nombre'" id="nombreHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+            <div class="row mb-4 align-items-start">
+            <div class="col col-12 col-xl-4 ">
+    <div class="form-group   ">
+        <label for="nombreCorto" class="form-label">
+            {{'municipios.nombrecorto'|translate}} 
+    
+        </label>
+        <input 
+            type="text" 
+            id="nombreCorto" 
+            autocomplete="off"
+            class="form-control form-control-sm "
+             
+             
+            maxlength="25" 
+             
+            
+            formControlName="nombreCorto" 
+            aria-describedby="nombreCortoHelp" 
+            placeholder="{{'municipios.nombrecorto'|translate}} "
+        >
+        <jnum-show-errors [control]="nombreCorto" [controlName]="'nombreCorto'" id="nombreCortoHelp"></jnum-show-errors>
+    </div>
+            </div>
+            <div class="col col-12 col-xl-6 ">
+    <div class="form-group   ">
+        <label for="nombre50" class="form-label">
+            {{'municipios.nombre50'|translate}} 
+    
+        </label>
+        <input 
+            type="text" 
+            id="nombre50" 
+            autocomplete="off"
+            class="form-control form-control-sm "
+             
+             
+            maxlength="50" 
+             
+            
+            formControlName="nombre50" 
+            aria-describedby="nombre50Help" 
+            placeholder="{{'municipios.nombre50'|translate}} "
+        >
+        <jnum-show-errors [control]="nombre50" [controlName]="'nombre50'" id="nombre50Help"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+                            </div>
+                        </form>
+                        @if(!(nombreDetalle && conf.env.detailsInModal)){
+                        <div class="row align-items-center" *ngIf="parent && !(tree && conf.env.saveTogether)">
+                            <div class="col text-end">
+                                <button type="button" class="btn btn-primary btn-sm ms-1 mt-2" (click)="onSubmit()" appHasPermission permission="add_ent_territorio_municipios">{{'global.add'|translate}}</button>
+                            </div>
+                        </div>
+                        }
+</ng-template>

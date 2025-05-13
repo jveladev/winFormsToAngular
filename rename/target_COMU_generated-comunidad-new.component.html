@@ -1,0 +1,145 @@
+    <div [ngClass]="{'row my-4': (!nombreDetalle || !conf.env.detailsInModal), 'row': (nombreDetalle && conf.env.detailsInModal) }" *ngIf="!isonetoone">
+        <div class="col col-12 col-md-12">
+            <section class="title sticky-top d-flex align-items-center mb-4" *ngIf="!parent || (tree && conf.env.saveTogether) || (nombreDetalle && conf.env.detailsInModal)">
+                <div class="title-text d-flex align-items-center">
+                    @if(nombreDetalle && conf.env.detailsInModal){
+                      <a  (click)="goToPrevious()" class="btn btn-link btn-rounded btn-circle me-2" role="button" attr.aria-label="{{ 'global.volver' | translate }}" title="{{ 'global.volver' | translate }}"><i class="bi bi-arrow-left"></i></a>
+                    } @else{
+                      <a (click)="goToPrevious()" class="btn btn-link btn-rounded btn-circle me-2" role="button" attr.aria-label="{{ 'global.volver' | translate }}" title="{{ 'global.volver' | translate }}"  ><i class="bi bi-arrow-left"></i></a>
+                    }                                       
+                    <h1 class="flex-grow-1">{{getNewTitle()}}</h1>
+                </div>
+                <div class="main-actions" >
+                    	  @if(!nombreDetalle){
+							              <button *ngIf="!parent && !conf.env.saveTogether" (click)="onSubmit()" type="button" class="btn btn-primary" appHasPermission permission="add_ent_territorio_comunidad">{{'global.guardar'|translate}}</button>
+                            <button *ngIf="!parent || (tree && conf.env.saveTogether)" (click)="onSubmit('new')" type="button" class="btn btn-secondary ms-1" appHasPermission permission="add_ent_territorio_comunidad">{{'global.guardar'|translate}}</button>
+                            <button *ngIf="!parent || (tree && conf.env.saveTogether)" (click)="onSubmit('list')" type="button" class="btn btn-primary  ms-1"  appHasPermission permission="add_ent_territorio_comunidad">{{'global.guardar.salir'|translate}}</button>
+                        }@else{
+                           @if(nombreDetalle && conf.env.detailsInModal){
+                            <button *ngIf="!parent || conf.env.saveTogether" (click)="onSubmit()" type="button" class="btn btn-primary  ms-1"  appHasPermission permission="add_ent_territorio_comunidad">{{'global.guardar'|translate}}</button>
+                           }@else{
+                            <button *ngIf="!parent || conf.env.saveTogether" (click)="onSubmit('new')" type="button" class="btn btn-secondary ms-1" appHasPermission permission="add_ent_territorio_comunidad">{{'global.guardar'|translate}}</button>
+                            <button *ngIf="!parent || conf.env.saveTogether" (click)="onSubmit('list')" type="button" class="btn btn-primary  ms-1"  appHasPermission permission="add_ent_territorio_comunidad">{{'global.guardar.salir'|translate}}</button>
+                           }
+                        }
+                </div>
+            </section>
+            <ng-container *ngIf="!parent || this.pop" appInsertSectionsMap></ng-container>
+
+            <div class="card mt-4 mb-3" *ngIf="!parent || (tree && conf.env.saveTogether)">
+                <div class="card-body">
+                    <ng-container *ngTemplateOutlet="formTemplate"/>
+                </div>
+            </div>
+            <div class="card mt-4 mb-3" *ngIf="parent && !(tree && conf.env.saveTogether)">
+                <div class="card-body">
+                    <div class="col-md-12" id="comunidadColapsable">
+                     @if(!(nombreDetalle && conf.env.detailsInModal)){
+                        <h2 class="h6 text-bold border-bottom border-primary pb-2">
+                            <a 
+                                class="colapsable collapsed" 
+                                data-bs-toggle="collapse" 
+                                href="#comunidadControl" 
+                                role="button" 
+                                aria-expanded="true" 
+                                aria-controls="comunidadControl">
+                                {{ getNewTitle() }}
+                            </a>
+                        </h2>
+                        }
+                        <div [ngClass]="{'collapse': (!nombreDetalle || !conf.env.detailsInModal)}"  class="collapse" id="comunidadControl">
+                            <ng-container *ngTemplateOutlet="formTemplate"/>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<ng-template #formTemplate>
+                        <form class="form-horizontal" [formGroup]="comunidadNewForm" (keyup.enter)='onSubmit($event)' aria-labelledby="comunidadFormTitle">
+                            <div class="viewer-body">
+            <div class="row mb-4 align-items-start">
+            <div class="col col-12 col-xl-4 ">
+    <div class="form-group   required">
+        <label for="codigo" class="form-label">
+            {{'comunidad.codigo'|translate}} 
+    <span class="text-primary">*</span>
+        </label>
+        <input 
+            type="text" 
+            id="codigo" 
+            autocomplete="off"
+            class="form-control form-control-sm mandatory "
+             
+             
+            maxlength="2" 
+             
+            (change)="codigoChange()"
+            formControlName="codigo" 
+            aria-describedby="codigoHelp" 
+            placeholder="{{'comunidad.codigo'|translate}} "
+        >
+        <jnum-show-errors [control]="codigo" [controlName]="'codigo'" id="codigoHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+            <div class="row mb-4 align-items-start">
+            <div class="col col-12 col-xl-7 ">
+    <div class="form-group   required">
+        <label for="nombre" class="form-label">
+            {{'comunidad.nombre'|translate}} 
+    <span class="text-primary">*</span>
+        </label>
+        <input 
+            type="text" 
+            id="nombre" 
+            autocomplete="off"
+            class="form-control form-control-sm mandatory "
+             
+             
+            maxlength="100" 
+             
+            
+            formControlName="nombre" 
+            aria-describedby="nombreHelp" 
+            placeholder="{{'comunidad.nombre'|translate}} "
+        >
+        <jnum-show-errors [control]="nombre" [controlName]="'nombre'" id="nombreHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+            <div class="row mb-4 align-items-start">
+            <div class="col col-12 col-xl-7 ">
+    <div class="form-group   ">
+        <label for="organo" class="form-label">
+            {{'comunidad.organo'|translate}} 
+    
+        </label>
+        <input 
+            type="text" 
+            id="organo" 
+            autocomplete="off"
+            class="form-control form-control-sm "
+             
+             
+            maxlength="100" 
+             
+            
+            formControlName="organo" 
+            aria-describedby="organoHelp" 
+            placeholder="{{'comunidad.organo'|translate}} "
+        >
+        <jnum-show-errors [control]="organo" [controlName]="'organo'" id="organoHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+                            </div>
+                        </form>
+                        @if(!(nombreDetalle && conf.env.detailsInModal)){
+                        <div class="row align-items-center" *ngIf="parent && !(tree && conf.env.saveTogether)">
+                            <div class="col text-end">
+                                <button type="button" class="btn btn-primary btn-sm ms-1 mt-2" (click)="onSubmit()" appHasPermission permission="add_ent_territorio_comunidad">{{'global.add'|translate}}</button>
+                            </div>
+                        </div>
+                        }
+</ng-template>

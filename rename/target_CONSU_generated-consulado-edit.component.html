@@ -1,0 +1,129 @@
+<div class="row my-4" *ngIf="consulado">
+    <div class="col col-12 col-md-12">
+        <section class="title sticky-top d-flex align-items-center mb-4" aria-labelledby="editUserTitle">
+            <div class="title-text d-flex align-items-center">
+                <a *ngIf="showGoToPrevious" (click)="goToPrevious()" class="btn btn-link btn-rounded btn-circle me-2" role="button" attr.aria-label="{{ 'global.volver' | translate }}"><i class="bi bi-arrow-left"></i></a>
+                <h1 class="flex-grow-1" id="editUserTitle">{{getEditTitle()}}</h1>
+            </div>
+            <app-consulado-botonera-op *ngIf="entity" #consuladobotoneraop (sendform)="onSubmit($event)" (previous)="goToPrevious()" (update)="updateFromDetalle($event)" [parent]="entity"></app-consulado-botonera-op>
+        </section>
+        <ng-container appInsertSectionsMap></ng-container>
+        <div id="collapseEditConsulado" class="card mt-4 mb-3">
+            <div class="card-body">
+                            <form class="form-horizontal" [formGroup]="consuladoEditForm" (keyup.enter)='onSubmit($event)'>
+                                <div class="viewer-body ">
+            <div class="row mb-4 align-items-start">
+            <div class="col-md-5" id="consulado_paisref_col">
+        <div class="form-group jnum-datepicker       required" >
+          <label for="paisref" class="form-label">{{'consulado.paisref'|translate}}     <span class="text-primary">*</span>
+</label>
+          <div class="input-group input-group-sm">          
+            <input type="text" class="d-none" maxlength="100" id="consulado_paisrefhid"   
+              formControlName="paisref"  
+              readonly>
+            <span class="me-1 col-3"> 
+              <input #codigoPaisPropElement  class="form-control mandatory " type="text" maxlength="3"          
+                id="consulado_paisref"  
+                autocomplete="off"                
+                (change)="obtenerPaisrefByCodigoPaisProp($event)"               
+                formControlName="codigoPaisProp" placeholder="{{'paises.codigo'|translate}} " >        
+              </span>           
+             <input  #paisrefElement type="text" class="form-control rounded-start mandatory " 
+            id="consulado_paisrefpropinput"   
+            placeholder="{{'consulado.paisref'|translate}}" autocomplete="off"
+            value="{{ paisrefSelected?.nombre }}"
+            formControlName="paisrefNombre"
+            (change)="obtenerPaisrefByNombre($event)">            
+                <button type="button" class="btn p-1 btn-datepicker border-end-0" attr.aria-label="{{'global.buscar'|translate}}">
+                    <i title="{{'global.buscar'|translate}}" class="bi bi-search" (click)="searchPaisref()"></i>
+                </button>
+                <button type="button" [disabled]="!paisrefSelected" class="btn p-1 btn-datepicker border-start-0 border-end-0" attr.aria-label="{{'global.limpiar'|translate}}">
+                    <i title="{{'global.limpiar'|translate}}" class="bi bi-eraser" (click)="clearPaisref()"></i>
+                </button>
+                <button type="button" class="btn p-1 btn-datepicker border-start-0 border-end-0" attr.aria-label="{{'global.add'|translate}}">
+                    <i title="{{'global.add'|translate}}" class="bi bi-plus-square" (click)="addPaisref()"></i>
+                </button>
+                <button type="button" [disabled]="!paisrefSelected" class="btn p-1 btn-datepicker border-start-0 border-end-0" attr.aria-label="{{'global.editar'|translate}}">
+                    <i title="{{'global.editar'|translate}}" class="bi bi-pencil-square" (click)="editPaisref(paisrefSelected)"></i>
+                </button>
+                <button type="button" [disabled]="!paisrefSelected" class="btn p-1 btn-datepicker border-start-0 " attr.aria-label="{{'global.eliminar'|translate}}">
+                    <i title="{{'global.eliminar'|translate}}" class="bi bi-trash3" (click)="deletePaisref(paisrefSelected)"></i>
+                </button>
+          </div>
+        </div>    
+          <div class="input-group input-group-sm">
+          <div>
+            <jnum-show-errors [control]="codigoPaisProp"></jnum-show-errors>
+          </div>
+            <jnum-show-errors [control]="paisrefNombre"></jnum-show-errors>
+        </div>   
+            </div>
+            <div class="col-md-2" id="consulado_activo_col">
+    <div class="form-check">
+      <input 
+        class="form-check-input"
+        type="checkbox"  
+        id="consulado_activo" formControlName="activo" 
+         
+        
+       >
+      <label class="form-check-label" for="consulado_activo">{{'consulado.activo'|translate}} </label>
+    </div>
+            </div>
+            </div>
+            <div class="row mb-4 align-items-start">
+            <div class="col-md-5" id="consulado_codigo_col">
+    <div class="form-group   required">
+        <label for="codigo" class="form-label">
+            {{'consulado.codigo'|translate}} 
+    <span class="text-primary">*</span>
+        </label>
+        <input 
+            type="text" 
+            id="codigo" 
+            autocomplete="off"
+            class="form-control form-control-sm mandatory "
+             
+             
+            maxlength="3" 
+             
+            (change)="codigoChange()"
+            formControlName="codigo" 
+            aria-describedby="codigoHelp" 
+            placeholder="{{'consulado.codigo'|translate}} "
+        >
+        <jnum-show-errors [control]="codigo" [controlName]="'codigo'" id="codigoHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+            <div class="row mb-4 align-items-start">
+            <div class="col-md-7" id="consulado_nombre_col">
+    <div class="form-group   required">
+        <label for="nombre" class="form-label">
+            {{'consulado.nombre'|translate}} 
+    <span class="text-primary">*</span>
+        </label>
+        <input 
+            type="text" 
+            id="nombre" 
+            autocomplete="off"
+            class="form-control form-control-sm mandatory "
+             
+             
+            maxlength="250" 
+             
+            
+            formControlName="nombre" 
+            aria-describedby="nombreHelp" 
+            placeholder="{{'consulado.nombre'|translate}} "
+        >
+        <jnum-show-errors [control]="nombre" [controlName]="'nombre'" id="nombreHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+                                </div>
+                            </form>
+            </div>
+        </div>
+    </div>
+</div>

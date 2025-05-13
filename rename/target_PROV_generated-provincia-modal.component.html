@@ -1,0 +1,14 @@
+<div id="modalprovincia">
+<div class="modal-header">
+    <h2 mat-dialog-title class="close closetoast">{{data.titulo}}</h2>
+    <div class="close closetoast">
+        <em class="fas fa-times closeicon"
+            [attr.title]="'global.cerrar'|translate"
+            [attr.aria-label]="'global.cerrar'|translate"  (click)="closeModal()"></em>
+    </div>
+</div>
+<div class="modal-body toastbody">
+    <ng-template #container></ng-template>
+    <router-outlet name="provincia"></router-outlet>       
+</div>
+</div>

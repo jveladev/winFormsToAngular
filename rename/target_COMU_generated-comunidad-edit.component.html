@@ -1,0 +1,95 @@
+<div class="row my-4" *ngIf="comunidad">
+    <div class="col col-12 col-md-12">
+        <section class="title sticky-top d-flex align-items-center mb-4" aria-labelledby="editUserTitle">
+            <div class="title-text d-flex align-items-center">
+                <a *ngIf="showGoToPrevious" (click)="goToPrevious()" class="btn btn-link btn-rounded btn-circle me-2" role="button" attr.aria-label="{{ 'global.volver' | translate }}"><i class="bi bi-arrow-left"></i></a>
+                <h1 class="flex-grow-1" id="editUserTitle">{{getEditTitle()}}</h1>
+            </div>
+            <app-comunidad-botonera-op *ngIf="entity" #comunidadbotoneraop (sendform)="onSubmit($event)" (previous)="goToPrevious()" (update)="updateFromDetalle($event)" [parent]="entity"></app-comunidad-botonera-op>
+        </section>
+        <ng-container appInsertSectionsMap></ng-container>
+        <div id="collapseEditComunidad" class="card mt-4 mb-3">
+            <div class="card-body">
+                            <form class="form-horizontal" [formGroup]="comunidadEditForm" (keyup.enter)='onSubmit($event)'>
+                                <div class="viewer-body ">
+            <div class="row mb-4 align-items-start">
+            <div class="col-md-4" id="comunidad_codigo_col">
+    <div class="form-group   required">
+        <label for="codigo" class="form-label">
+            {{'comunidad.codigo'|translate}} 
+    <span class="text-primary">*</span>
+        </label>
+        <input 
+            type="text" 
+            id="codigo" 
+            autocomplete="off"
+            class="form-control form-control-sm mandatory "
+             
+             
+            maxlength="2" 
+             
+            (change)="codigoChange()"
+            formControlName="codigo" 
+            aria-describedby="codigoHelp" 
+            placeholder="{{'comunidad.codigo'|translate}} "
+        >
+        <jnum-show-errors [control]="codigo" [controlName]="'codigo'" id="codigoHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+            <div class="row mb-4 align-items-start">
+            <div class="col-md-7" id="comunidad_nombre_col">
+    <div class="form-group   required">
+        <label for="nombre" class="form-label">
+            {{'comunidad.nombre'|translate}} 
+    <span class="text-primary">*</span>
+        </label>
+        <input 
+            type="text" 
+            id="nombre" 
+            autocomplete="off"
+            class="form-control form-control-sm mandatory "
+             
+             
+            maxlength="100" 
+             
+            
+            formControlName="nombre" 
+            aria-describedby="nombreHelp" 
+            placeholder="{{'comunidad.nombre'|translate}} "
+        >
+        <jnum-show-errors [control]="nombre" [controlName]="'nombre'" id="nombreHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+            <div class="row mb-4 align-items-start">
+            <div class="col-md-7" id="comunidad_organo_col">
+    <div class="form-group   ">
+        <label for="organo" class="form-label">
+            {{'comunidad.organo'|translate}} 
+    
+        </label>
+        <input 
+            type="text" 
+            id="organo" 
+            autocomplete="off"
+            class="form-control form-control-sm "
+             
+             
+            maxlength="100" 
+             
+            
+            formControlName="organo" 
+            aria-describedby="organoHelp" 
+            placeholder="{{'comunidad.organo'|translate}} "
+        >
+        <jnum-show-errors [control]="organo" [controlName]="'organo'" id="organoHelp"></jnum-show-errors>
+    </div>
+            </div>
+            </div>
+                                </div>
+                            </form>
+            </div>
+        </div>
+    </div>
+</div>

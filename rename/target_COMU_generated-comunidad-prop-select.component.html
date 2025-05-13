@@ -1,0 +1,132 @@
+<div class="modal-header">
+    <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-window"></i> {{getPropTitle()}}</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" [attr.title]="'global.cerrar'|translate" [attr.aria-label]="'global.cerrar'|translate"  (click)="close()"></button>
+</div>
+<div class="modal-body">
+  <div class="row my-4" *ngIf="hasSearchInProp">
+    <div class="col col-12 col-md-12">
+        <div class="card searchbox mt-4 mb-5" role="search" aria-labelledby="searchTitle">
+            <app-comunidad-search #searchComunidadForm (setSearchData)="processSearchData($event)" [data]="data"></app-comunidad-search>            
+        </div>
+    </div>
+  </div>
+  <div class="table-info d-flex align-items-end mb-2">
+    <p class="flex-grow-1 mb-0">{{searchResultsLabel}}</p>
+    <div class="main-actions d-flex">
+      <div class="d-flex">
+          <button class="btn btn-secondary ms-1" title="{{'global.limpiar.filtro'|translate}}" (click)="deleteSelected()">
+            <i class="bi bi-trash"></i>
+          </button>        
+          <igm-filtros [entityName]="'comunidadProp'" [dataSource]="dataSourceAux" [dataSourceTotal]="dataSourceTotal" (filteredData)="filterData($event)" (columnDefinitionsEvent)="setColumnDefintions($event)" [columnDefinitions]="columnDefinitions"/>
+          <button title="{{'global.excel'|translate}}" *ngIf="!lastReport || lastReport=='Xls'" (click)="generarExcel()"  class="btn btn-secondary  ms-1" type="button" data-bs-toggle="dropdown"><i class="bi bi-file-earmark-excel-fill"></i></button>
+          <button title="{{'global.pdf'|translate}}" *ngIf="lastReport=='Pdf'" (click)="generarPdf()"  class="btn btn-secondary  ms-1" type="button" data-bs-toggle="dropdown"><i class="bi bi-file-earmark-pdf-fill"></i></button>
+          <button title="{{'global.export.listado'|translate}}" *ngIf="lastReport=='List'" (click)="generarListado()"  class="btn btn-secondary  ms-1" type="button" data-bs-toggle="dropdown"><i class="bi bi-file-earmark-text-fill"></i></button>          
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle ms-1" type="button" data-bs-toggle="dropdown">{{ 'global.exportar' | translate }}</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="generarPdf()"><i class="bi bi-filetype-pdf text-primary"></i> {{'global.pdf'|translate}}</a></li>
+              <li><a class="dropdown-item" (click)="generarListado()"><i class="bi bi-filetype-xls text-primary"></i> {{'global.export.listado'|translate}}</a></li>
+              <li><a class="dropdown-item" (click)="generarExcel()"><i class="bi bi-filetype-xls text-primary"></i> {{'global.excel'|translate}}</a></li>
+             </ul>
+        </div>            
+      </div>
+    </div>
+  </div>
+    <form class="form-horizontal propselect" [formGroup]="searchPropForm" aria-labelledby="searchFormTitle">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped ">
+            <thead>
+                <tr>
+                    <th scope="col" class="d-none">
+                        <label for="header-comunidad-check" *ngIf="!isMultiple" class="control-label">{{'global.seleccionUnElemento'|translate}}</label>
+                        <div class="form-check" *ngIf="isMultiple">
+                            <input id="header-comunidad-check" type="checkbox" class="form-check-input" (click)="selectAllRows()"
+                                [checked]="isAllEntitiesSelected"
+                                [attr.aria-label]="'global.seleccionTodosElementos'|translate"
+                                [indeterminate]="hasValuesSelectionEntities && !isAllEntitiesSelected"/>
+                        </div>
+                    </th>
+                <ng-container *ngFor="let column of columnDefinitions;index as i">
+                    <th #tablesort scope="col" draggable="true" (dragstart)="dragStartColumn(i)" (dragover)="allowDrop($event)" (drop)="dropColumn(i)" scope="col" *ngIf="!column.hasOrder && column.visible" class="{{column.headerclass}}">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span>{{column.label}}</span>
+                            <span><i (keypress)="tablesort.click()" (click)="tablesort.click()"></i></span>
+                        </div>
+                    </th>
+                    <th #tablesort scope="col" draggable="true" (dragstart)="dragStartColumn(i)" (dragover)="allowDrop($event)" (drop)="dropColumn(i)" scope="col" *ngIf="column.hasOrder && column.visible" sortable="{{column.column}}" (sort)="onSort($event)" class="{{column.headerclass}}">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span>{{column.label}}</span>
+                            <span><i [ngClass]="columnDirectionSortArrow(column.column)"></i></span>
+                        </div>
+                    </th>
+                </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" class="d-none"></th>
+    <td  *ngIf="isVisibleColumn('codigo')">
+        <div class="input-password">
+            <input class="form-control form-control-sm"   maxlength="2" formControlName="codigoeq" (keyup)="search()" placeholder="{{'comunidad.codigo'|translate}}">
+        </div>
+    </td>
+    <td  *ngIf="isVisibleColumn('nombre')">
+        <div class="input-password">
+            <input class="form-control form-control-sm"   maxlength="100" formControlName="nombreeq" (keyup)="search()" placeholder="{{'comunidad.nombre'|translate}}">
+        </div>
+    </td>
+    <td  *ngIf="isVisibleColumn('organo')">
+        <div class="input-password">
+            <input class="form-control form-control-sm"   maxlength="100" formControlName="organoeq" (keyup)="search()" placeholder="{{'comunidad.organo'|translate}}">
+        </div>
+    </td>
+                </tr>
+                <tr class="blackcell" *ngIf="dataSource.length === 0">
+                    <td [attr.colspan]="columnDefinitions.length + 1"></td>
+                </tr>
+                <ng-container *ngFor="let comunidad of dataSource; index as cont">  
+                    <tr [ngClass]="isRowChecked(comunidad)?'row-selected':''" (click)="selectRow(comunidad)" (dblclick)="save()">
+                        <td class="d-none">
+                            <div class="form-check">
+                                <label for="check{{cont}}" class="control-label"></label>
+                                <input id="check{{cont}}" 
+                                    type="checkbox" class="form-check-input" 
+                                    (click)="selectRow(comunidad)"
+                                    [checked]="isRowChecked(comunidad)" 
+                                    [attr.aria-label]="'check'+cont"/>
+                            </div>
+                        </td>
+                        <ng-container *ngFor="let column of columnDefinitions">
+                             <td [ngClass]="isRowChecked(comunidad)?'row-selected':'blackcell {{column.cellclass}}'" *ngIf="column.visible">
+                                <span *ngIf="column.type=='calendar'">{{getProperty(comunidad,column.value) | date: 'dd/MM/yyyy'}}</span>
+                                <span *ngIf="column.type=='checkbox'">{{(getProperty(comunidad,column.value)?getProperty(comunidad,column.value).toString():"false") | translate}}</span>
+                                <span *ngIf="column.type=='comboradio'">{{getComboRadioValue(column,getProperty(comunidad,column.value))}}</span>
+                                <span *ngIf="column.type=='decimal' || column.type=='number'">{{getProperty(comunidad,column.value)|number:column.masknumber}}</span>     
+                                <span *ngIf="column.type=='default'">{{getProperty(comunidad,column.value)}}</span> 
+                                <span *ngIf="column.type=='htmlEditor'" [innerHTML]="getProperty(comunidad,column.value)"></span>
+                            </td>
+                        </ng-container>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+  <div class="d-flex justify-content-end">
+    <ngb-pagination *ngIf="totalElements>0" 
+        [collectionSize]="totalElements" 
+        [pageSize]="pageSize" 
+        [(page)]="page" 
+        [boundaryLinks]="true" 
+        (pageChange)="getPropData(page)"
+        [maxSize]="5">
+    </ngb-pagination>
+  </div>
+</div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="main-actions d-flex" id="comunidadpropNavbar">
+        <button autofocus class="btn btn-primary ms-1" [disabled]="!hasValuesSelectionEntities" (click)="save()" title="{{'global.seleccionar'|translate}}">
+            {{'global.seleccionar'|translate}}
+        </button>
+    </div>
+</div>
