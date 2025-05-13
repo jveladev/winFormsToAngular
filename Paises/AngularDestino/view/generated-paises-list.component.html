@@ -1,0 +1,101 @@
+<div class="col">
+    <jnum-alert></jnum-alert>
+    <div class="table-info d-flex align-items-end mb-2">
+        <p class="flex-grow-1 mb-0">{{searchResultsLabel}}</p>
+        <div class="main-actions d-flex">
+            <div class="d-flex">
+            <app-paises-botonera class="d-flex" [isheader]='false'></app-paises-botonera>
+                <igm-filtros [entityName]="'paises'" [dataSource]="dataSourceAux" [dataSourceTotal]="dataSourceTotal" (filteredData)="filterData($event)" (columnDefinitionsEvent)="setColumnDefintions($event)" [columnDefinitions]="columnDefinitions"/>
+          <button title="{{'global.excel'|translate}}" *ngIf="!lastReport || lastReport=='Xls'" (click)="generarExcel()"  class="btn btn-secondary  ms-1" type="button" data-bs-toggle="dropdown"><i class="bi bi-file-earmark-excel-fill"></i></button>
+          <button title="{{'global.pdf'|translate}}" *ngIf="lastReport=='Pdf'" (click)="generarPdf()"  class="btn btn-secondary  ms-1" type="button" data-bs-toggle="dropdown"><i class="bi bi-file-earmark-pdf-fill"></i></button>
+          <button title="{{'global.export.listado'|translate}}" *ngIf="lastReport=='List'" (click)="generarListado()"  class="btn btn-secondary  ms-1" type="button" data-bs-toggle="dropdown"><i class="bi bi-file-earmark-text-fill"></i></button>          
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle ms-1" type="button" data-bs-toggle="dropdown">{{ 'global.exportar' | translate }}</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="generarExcel()"><i class="bi bi-filetype-xls text-primary"></i> {{'global.excel'|translate}}</a></li>            
+              <li><a class="dropdown-item" (click)="generarListado()"><i class="bi bi-filetype-xls text-primary"></i> {{'global.export.listado'|translate}}</a></li>
+              <li><a class="dropdown-item" (click)="generarPdf()"><i class="bi bi-filetype-pdf text-primary"></i> {{'global.pdf'|translate}}</a></li>
+             </ul>
+        </div> 
+            </div>
+            <div class="d-flex">
+                <button type="button" *ngIf="hasScrollButtons" aria-label="Scroll izquierda tabla" class="btn btn-secondary btn-sm ms-1">
+                    <i class="bi bi-chevron-left" (keypress)="scrollLeft()" (click)="scrollLeft()"></i>
+                </button>
+                <button type="button" *ngIf="hasScrollButtons" aria-label="Scroll derecha tabla" class="btn btn-secondary btn-sm ms-1">
+                    <i class="bi bi-chevron-right" (keypress)="scrollRight()" (click)="scrollRight()"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+<div class="table-responsive" #tableresponsivePaises>
+    <table class="table table-bordered  table-striped">
+        <thead>
+            <tr>
+                <ng-container *ngFor="let column of columnDefinitions;index as i">
+                    <th #tablesort scope="col" draggable="true" (dragstart)="dragStartColumn(i)" (dragover)="allowDrop($event)" (drop)="dropColumn(i)" scope="col" *ngIf="!column.hasOrder && column.visible" class="{{column.headerclass}}">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span>{{column.label}}</span>
+                            <span><i (keypress)="tablesort.click()" (click)="tablesort.click()"></i></span>
+                        </div>
+                    </th>
+                    <th #tablesort scope="col" draggable="true" (dragstart)="dragStartColumn(i)" (dragover)="allowDrop($event)" (drop)="dropColumn(i)" scope="col" *ngIf="column.hasOrder && column.visible" sortable="{{column.column}}" (sort)="onSort($event)" class="{{column.headerclass}}">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span>{{column.label}}</span>
+                            <span><i [ngClass]="columnDirectionSortArrow(column.column)"></i></span>
+                        </div>
+                    </th>
+                </ng-container>
+                <th class="text-center" scope="col">{{'global.actions'|translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="blackcell" *ngIf="dataSource.length === 0">
+                <td [attr.colspan]="columnDefinitions.length + 1"></td>
+            </tr>
+            <ng-container *ngFor="let paises of dataSource; index as cont">
+                <tr class="blackcell" >
+                <ng-container *ngFor="let column of columnDefinitions">
+                    <td class="{{getCellClass(paises,column.def)}} {{column.cellclass}}" *ngIf="column.visible">
+                        <span *ngIf="column.type=='calendar'">{{getProperty(paises,column.value) | date: 'dd/MM/yyyy'}}</span>
+                        <span *ngIf="column.type=='checkbox'">{{(getProperty(paises,column.value)?getProperty(paises,column.value).toString():"false") | translate}}</span>
+                        <span *ngIf="column.type=='comboradio'">{{getComboRadioValue(column,getProperty(paises,column.value))}}</span>
+                        <span *ngIf="column.type=='decimal' || column.type=='number'">{{getProperty(paises,column.value)|number:column.masknumber}}</span>
+                        <span *ngIf="column.type=='default'">{{getProperty(paises,column.value)}}</span>
+                        <span *ngIf="column.type=='htmlEditor'" [innerHTML]="getProperty(paises,column.value)"></span>
+                    </td>
+                </ng-container>
+                    <td class="text-center text-nowrap">
+                        <button type="button" *ngIf="canDoEdit(paises)" class="btn btn-link p-1" attr.aria-label="{{'global.editar'|translate}}" appHasPermission permission="edit_ent_territorio_paises">
+                            <i class="bi bi-pencil-square p-1 pointer" (keypress)="goToEditParam(paises)" (click)="goToEditParam(paises)" title="{{'global.editar'|translate}}"></i>
+                        </button>
+                        <button type="button" *ngIf="canDoDelete(paises)" class="btn btn-link p-1" attr.aria-label="{{'global.eliminar'|translate}}" appHasPermission permission="delete_ent_territorio_paises">
+                            <i class="bi bi-trash3 p-1 pointer" *ngIf="canDoDelete(paises)" (keypress)="openDeleteDialog(paises)" (click)="openDeleteDialog(paises)" title="{{'global.eliminar'|translate}}"></i>
+                        </button>
+
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+        <div class="form-group" *ngIf="totalElements>0">    
+            <select class="form-select form-select-sm comboItemsPerPage" [(ngModel)]="pageSize" (ngModelChange)="getEntityList(0)"  title="{{'itemsPerPage'|translate}}">
+                <option [ngValue]="10">10 {{'itemsPerPage'|translate}}</option>
+                <option [ngValue]="20">20 {{'itemsPerPage'|translate}}</option>
+                <option [ngValue]="30">30 {{'itemsPerPage'|translate}}</option>
+                <option [ngValue]="40">40 {{'itemsPerPage'|translate}}</option>
+                <option [ngValue]="50">50 {{'itemsPerPage'|translate}}</option>
+            </select>          
+        </div>
+        <ngb-pagination *ngIf="totalElements>0"
+            [collectionSize]="totalElements"
+            [pageSize]="pageSize"
+            [(page)]="page"
+            [boundaryLinks]="true"
+            (pageChange)="getEntityList(page)"
+            [maxSize]="5">
+        </ngb-pagination>
+    </div>
+</div>
+</div>
