@@ -1,0 +1,90 @@
+<div class="jnum-table border table-responsive">
+  <table class="table table-sm table-bordered table-hover border-0 mb-0">
+    <thead class="bg-primary bg-gradient text-white">
+      <tr>
+        <th scope="col" class="text-center align-middle fw-normal" *ngIf="displayedColumns.includes('codigo')">
+          {{'paises.codigo'|translate}}
+        </th>
+        <th scope="col" class="text-center align-middle fw-normal" *ngIf="displayedColumns.includes('digito')">
+          {{'paises.digito'|translate}}
+        </th>
+        <th scope="col" class="text-center align-middle fw-normal" *ngIf="displayedColumns.includes('nombre')">
+          {{'paises.nombre'|translate}}
+        </th>
+        <th scope="col" class="text-center align-middle fw-normal" *ngIf="displayedColumns.includes('comunitario')">
+          {{'paises.comunitario'|translate}}
+        </th>
+        <th scope="col" class="text-center align-middle fw-normal" *ngIf="displayedColumns.includes('activo')">
+          {{'paises.activo'|translate}}
+        </th>
+        <th scope="col" class="text-center align-middle fw-normal" *ngIf="displayedColumns.includes('asimiladoAComunitario')">
+          {{'paises.asimiladoAComunitario'|translate}}
+        </th>
+        <th scope="col" class="text-center align-middle fw-normal" *ngIf="displayedColumns.includes('operations')">
+          {{'global.acciones'|translate}}
+        </th>
+      </tr>
+    </thead>
+    <tbody @if(this.page && this.page.content?.length) {
+        @for(paises of this.dataSource.data; track $index) {
+          <tr [ngClass]="{ 'highlight-row': paises.hightlight }">
+            <td *ngIf="displayedColumns.includes('codigo')" class="text-center">
+              {{paises.codigo}}
+            </td>
+            <td *ngIf="displayedColumns.includes('digito')" class="text-center">
+              {{paises.digito}}
+            </td>
+            <td *ngIf="displayedColumns.includes('nombre')" class="text-start">
+              {{paises.nombre}}
+            </td>
+            <td *ngIf="displayedColumns.includes('comunitario')" class="text-center">
+              {{paises.comunitario}}
+            </td>
+            <td *ngIf="displayedColumns.includes('activo')" class="text-center">
+              <span *ngIf="paises.activo" class="bi bi-check-lg"></span>
+            </td>
+            <td *ngIf="displayedColumns.includes('asimiladoAComunitario')" class="text-center">
+              <span *ngIf="paises.asimiladoAComunitario" class="bi bi-check-lg"></span>
+            </td>
+            <td *ngIf="displayedColumns.includes('operations')" class="text-center">
+              <button
+                type="button"
+                class="btn btn-default btn-xs"
+                title="{{ 'global.ver' | translate }}"
+                (click)="viewButtonClicked(paises)"
+              >
+                <i class="bi bi-eye-fill"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-xs"
+                title="{{ 'global.editar' | translate }}"
+                (click)="editButtonClicked(paises)"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-xs"
+                title="{{ 'global.eliminar' | translate }}"
+                (click)="openDeleteDialog(paises)"
+              >
+                <i class="bi bi-trash3-fill"></i>
+              </button>
+            </td>
+          </tr>
+        }
+      } @else {
+        <tr>
+          <td [attr.colspan]="displayedColumns.length" class="text-center">
+            {{ 'global.no.hay.registros' | translate }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+<jnum-pagination-component
+  [pageExisting]="this.page"
+  (pageEmitter)="getEntitiesByFilterPaginated($event)"
+></jnum-pagination-component>

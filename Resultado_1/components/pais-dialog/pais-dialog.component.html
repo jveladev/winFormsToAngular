@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>{{ tituloDialog }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="paisForm" class="pais-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="nombre" required>
+      <mat-error *ngIf="paisForm.get('nombre')?.hasError('required')">
+        El nom és obligatori
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Codi INE</mat-label>
+      <input matInput formControlName="codigo" required>
+      <mat-error *ngIf="paisForm.get('codigo')?.hasError('required')">
+        El codi és obligatori
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>DC</mat-label>
+      <input matInput formControlName="digito">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Comunitari</mat-label>
+      <input matInput formControlName="comunitario">
+    </mat-form-field>
+    
+    <div class="checkbox-group">
+      <mat-checkbox formControlName="activo" color="primary">
+        Actiu
+      </mat-checkbox>
+      
+      <mat-checkbox formControlName="asimiladoAComunitario" color="primary">
+        Assimilat a comunitari
+      </mat-checkbox>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancel·lar</button>
+  <button mat-raised-button color="primary" (click)="guardar()" [disabled]="paisForm.invalid">
+    Guardar
+  </button>
+</mat-dialog-actions>

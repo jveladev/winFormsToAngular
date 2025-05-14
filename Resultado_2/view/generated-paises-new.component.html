@@ -1,0 +1,150 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">{{ 'global.add' | translate }} {{ 'paises.singular' | translate }}</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="entityForm" class="form-horizontal" aria-labelledby="formTitle">
+          <div class="viewer-body">
+            <!-- Código -->
+            <div class="row mb-4 align-items-start">
+              <div class="col col-12 col-xl-4">
+                <div class="form-group">
+                  <label for="codigo" class="form-label">
+                    {{ 'paises.codigo' | translate }}
+                    <span class="required-indicator text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="codigo"
+                    autocomplete="off"
+                    class="form-control form-control-sm"
+                    maxlength="10"
+                    formControlName="codigo"
+                    aria-describedby="codigoHelp"
+                    placeholder="{{ 'paises.codigo' | translate }}"
+                  >
+                  <jnum-show-errors [control]="codigo" [controlName]="'codigo'" id="codigoHelp"></jnum-show-errors>
+                </div>
+              </div>
+              
+              <!-- Dígito -->
+              <div class="col col-12 col-xl-2">
+                <div class="form-group">
+                  <label for="digito" class="form-label">
+                    {{ 'paises.digito' | translate }}
+                  </label>
+                  <input
+                    type="text"
+                    id="digito"
+                    autocomplete="off"
+                    class="form-control form-control-sm"
+                    maxlength="2"
+                    formControlName="digito"
+                    aria-describedby="digitoHelp"
+                    placeholder="{{ 'paises.digito' | translate }}"
+                  >
+                  <jnum-show-errors [control]="digito" [controlName]="'digito'" id="digitoHelp"></jnum-show-errors>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Nombre -->
+            <div class="row mb-4 align-items-start">
+              <div class="col col-12 col-xl-8">
+                <div class="form-group">
+                  <label for="nombre" class="form-label">
+                    {{ 'paises.nombre' | translate }}
+                    <span class="required-indicator text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="nombre"
+                    autocomplete="off"
+                    class="form-control form-control-sm"
+                    maxlength="70"
+                    formControlName="nombre"
+                    aria-describedby="nombreHelp"
+                    placeholder="{{ 'paises.nombre' | translate }}"
+                  >
+                  <jnum-show-errors [control]="nombre" [controlName]="'nombre'" id="nombreHelp"></jnum-show-errors>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Comunitario -->
+            <div class="row mb-4 align-items-start">
+              <div class="col col-12 col-xl-6">
+                <div class="form-group">
+                  <label for="comunitario" class="form-label">
+                    {{ 'paises.comunitario' | translate }}
+                  </label>
+                  <input
+                    type="text"
+                    id="comunitario"
+                    autocomplete="off"
+                    class="form-control form-control-sm"
+                    maxlength="50"
+                    formControlName="comunitario"
+                    aria-describedby="comunitarioHelp"
+                    placeholder="{{ 'paises.comunitario' | translate }}"
+                  >
+                  <jnum-show-errors [control]="comunitario" [controlName]="'comunitario'" id="comunitarioHelp"></jnum-show-errors>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Checkboxes -->
+            <div class="row mb-4 align-items-start">
+              <div class="col col-12 col-xl-3">
+                <div class="form-check mb-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="paises_activo"
+                    formControlName="activo"
+                  >
+                  <label class="form-check-label" for="paises_activo">
+                    {{ 'paises.activo' | translate }}
+                  </label>
+                </div>
+              </div>
+              
+              <div class="col col-12 col-xl-4">
+                <div class="form-check mb-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="paises_asimiladoAComunitario"
+                    formControlName="asimiladoAComunitario"
+                  >
+                  <label class="form-check-label" for="paises_asimiladoAComunitario">
+                    {{ 'paises.asimiladoAComunitario' | translate }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Botones -->
+          <div class="row">
+            <div class="col text-end">
+              <button type="button" class="btn btn-secondary btn-sm ms-1" (click)="closeForm()">
+                <i class="bi bi-x-circle me-1"></i>{{ 'global.cancelar' | translate }}
+              </button>
+              <button 
+                type="button"
+                class="btn btn-primary btn-sm ms-1"
+                [disabled]="entityForm.invalid || isLoading"
+                (click)="add(entityForm.value)"
+              >
+                <i class="bi bi-check-circle me-1"></i>{{ 'global.guardar' | translate }}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

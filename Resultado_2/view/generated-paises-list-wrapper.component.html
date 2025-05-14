@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card shadow">
+      <div class="card-header">
+        <div class="row">
+          <div class="col">
+            <h5 class="mb-0">{{ 'paises.titulo' | translate }}</h5>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-sm btn-primary" (click)="addEntityHandler()">
+              <i class="bi bi-plus-circle me-1"></i>{{ 'global.add' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <app-generated-paises-search #searchPaisesForm (searchEvent)="searchHandler($event)"></app-generated-paises-search>
+      <app-generated-paises-list 
+        #paisesListTable 
+        [paisesFilter]="paisesFilter"
+        (viewEntityEvent)="viewEntityHandler($event)"
+        (editEntityEvent)="editEntityHandler($event)">
+      </app-generated-paises-list>
+    </div>
+  </div>
+</div>

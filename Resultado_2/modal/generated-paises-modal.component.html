@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <h5 class="modal-title">{{ title }}</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()"></button>
+</div>
+<div class="modal-body">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-4 text-end">
+        <strong>{{ 'paises.codigo' | translate }}:</strong>
+      </div>
+      <div class="col-8">
+        {{ paises.codigo }}
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-4 text-end">
+        <strong>{{ 'paises.digito' | translate }}:</strong>
+      </div>
+      <div class="col-8">
+        {{ paises.digito }}
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-4 text-end">
+        <strong>{{ 'paises.nombre' | translate }}:</strong>
+      </div>
+      <div class="col-8">
+        {{ paises.nombre }}
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-4 text-end">
+        <strong>{{ 'paises.comunitario' | translate }}:</strong>
+      </div>
+      <div class="col-8">
+        {{ paises.comunitario }}
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-4 text-end">
+        <strong>{{ 'paises.activo' | translate }}:</strong>
+      </div>
+      <div class="col-8">
+        <i *ngIf="paises.activo" class="bi bi-check-lg"></i>
+        <i *ngIf="!paises.activo" class="bi bi-x-lg"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 text-end">
+        <strong>{{ 'paises.asimiladoAComunitario' | translate }}:</strong>
+      </div>
+      <div class="col-8">
+        <i *ngIf="paises.asimiladoAComunitario" class="bi bi-check-lg"></i>
+        <i *ngIf="!paises.asimiladoAComunitario" class="bi bi-x-lg"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="cerrar()">
+    {{ 'global.cancelar' | translate }}
+  </button>
+  <button type="button" class="btn btn-primary" (click)="seleccionar()">
+    {{ 'global.seleccionar' | translate }}
+  </button>
+</div>
