@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>{{ titulo }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="paisForm" class="pais-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" required placeholder="Nombre del país">
+      <mat-error *ngIf="paisForm.get('nombre')?.hasError('required')">
+        El nombre es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Código INE</mat-label>
+          <input matInput formControlName="codigo" required placeholder="Código INE">
+          <mat-error *ngIf="paisForm.get('codigo')?.hasError('required')">
+            El código es obligatorio
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Dígito de control</mat-label>
+          <input matInput formControlName="digito" placeholder="DC">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Comunitario</mat-label>
+      <input matInput formControlName="comunitario" placeholder="Comunitario">
+    </mat-form-field>
+
+    <div class="checkboxes">
+      <mat-checkbox formControlName="activo" color="primary">
+        Activo
+      </mat-checkbox>
+
+      <mat-checkbox formControlName="asimiladoAComunitario" color="primary">
+        Asimilado a comunitario
+      </mat-checkbox>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cerrar()" [disabled]="guardando">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="guardar()" [disabled]="guardando">
+    <mat-spinner diameter="20" *ngIf="guardando" class="spinner-button"></mat-spinner>
+    <span *ngIf="!guardando">Guardar</span>
+  </button>
+</mat-dialog-actions> 

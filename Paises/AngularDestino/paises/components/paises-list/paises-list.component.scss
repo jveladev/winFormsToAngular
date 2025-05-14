@@ -1,0 +1,54 @@
+.container {
+  padding: 20px;
+}
+
+.filtros-card {
+  margin-bottom: 20px;
+}
+
+.lista-card {
+  margin-bottom: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+mat-form-field {
+  margin-bottom: 10px;
+}
+
+button[mat-raised-button] {
+  margin-left: 8px;
+} 
